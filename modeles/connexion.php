@@ -44,9 +44,11 @@ function verif(){
                 $url = 'index.php?controle=abo&action=affAbo';
                 header("Refresh: $delai;url=$url"); 
             endif;
+            return true;
         endif;
         if ($row['mdp'] =!  sha1($mdp) or $row['email'] =! $mail) :
             session_destroy();
+            return false;
         endif;
     endwhile;
 

@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="./vues/css/style.css">
 </head>
 
-<body>
+<body class="inscon">
 	<div class="container header-not-main">
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">        
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +39,7 @@
         </nav> 
     </div>
 
-	<div id ="form" class="contenu">
+	<div id ="form" class="container bg-light">
 		<h3> Se Connecter </h3> 
 		<form action="index.php?controle=connexion&action=reqmodele" method="post">
 			<label for="typec"> Vous êtes ?</label> <br>
@@ -58,8 +58,12 @@
 					
 			<input type= "submit"  value="Connexion" >
            
-		</form>
-        
+        </form>
+        <?php
+        if($errco==1){
+            echo("Votre identifiant ou votre mot de passe est incorect.");
+        }
+        ?>
 	</div>
 </body>
 </html>
