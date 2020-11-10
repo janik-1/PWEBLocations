@@ -53,8 +53,9 @@
         <span class="row col-12 text-titre">
             Nos voitures disponibles <br> <br>
         </span>
+
         <div class="annonces">
-            <?php
+            <?php if ($msg == ""){
                 while($row = $stmt->fetch(PDO::FETCH_ASSOC)) :
                     $t = json_decode($row['caract'],true);
                     echo('<div class="row col-lg-4 col-sm-12 annonce">');
@@ -67,8 +68,10 @@
                             echo '<img class="annonce-img img-fluid" src="./vues/images/' . $row['photo'] .  '"/>'; echo('</br>');                
                     echo('</div>');
                 endwhile;
+            }
             ?>            
         </div>    
     </div>
-</body>
+   <?php echo($msg); ?>
+   </body>
 </html>

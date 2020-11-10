@@ -3,7 +3,12 @@ session_start();
 
 function af(){
     require ("./modeles/affnonabo.php");
-    $stmt = execreq();
+     if (is_string(execreq()) == true){
+        $msg = execreq();
+    }else{
+        $stmt = execreq();
+    }
+    
     require ("./vues/affnonabo.php");
 }
 

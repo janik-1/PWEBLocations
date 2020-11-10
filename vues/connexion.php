@@ -57,10 +57,9 @@
 					value= " " />             <br/><br/>
 					
 			<input type= "submit"  value="Connexion" >
-
-            
+           
 		</form>
-        <?php echo($msg)?>
+        
 	</div>
 </body>
 </html>

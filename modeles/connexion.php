@@ -3,7 +3,7 @@ session_start();
 
 
 function verif(){
-    $s ="";
+
     require ("./connect.php");
 
     $mail=  isset($_POST['mail'])?($_POST['mail']):'';
@@ -46,11 +46,12 @@ function verif(){
             endif;
         endif;
         if ($row['mdp'] =!  sha1($mdp) or $row['email'] =! $mail) :
-            $s = "Le mot de passe ou le mail est incorrect !";
             session_destroy();
         endif;
     endwhile;
-    return s;
+
+
+
 }
 
 

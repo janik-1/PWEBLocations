@@ -60,7 +60,7 @@ function date1(){ // voiture id en parametre
 
     }
 
-    $delai = 2;
+    $delai = 0.5;
 	$url = 'index.php?controle=abo&action=affAbo';
 	header("Refresh: $delai;url=$url");
 }
