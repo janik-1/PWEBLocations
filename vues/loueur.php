@@ -39,89 +39,96 @@
             </div>            
         </nav> 
     </div>
-<h1> vehicule disponible ou en revision </h1>
-<?php
-while($row = $stmt->fetch(PDO::FETCH_ASSOC)) :
-    $t = json_decode($row['caract'],true);
-    echo('<div class="row col-lg-4 col-sm-12 annonce">');
-            //echo ('<span class="numAn">Annonce nº' . $row['id_vehicule'] . ' :</span></br>');
-            echo ('Id de la voiture : ' . $row['id_vehicule']); echo('</br>');
-            echo htmlspecialchars('Voiture : ' . $row['type']) ; echo('</br>');                         
-            echo ('Moteur : ' . $t['moteur']); echo('</br>');
-            echo ('Type de boite : ' . $t['boite']); echo('</br>');
-            echo ('Nombre De Portes : ' . $t['nbPortes']); echo('</br>');
-            echo ('Nombre de véhicule en stock : ' . $row['nb']); echo('</br>');
-            echo htmlspecialchars('Etat  : ' . $row['location']);  echo('</br>');
-            echo ('Prix (par jour de location) : ' . $row['prix']); echo('</br>');
-            echo '<img class="annonce-img img-fluid" src="./vues/images/' . $row['photo'] .  '"/>'; echo('</br>');                
-    echo('</div>');
-endwhile;
-?>
 
-<h1> LOCATION ACTUELLEMENT EN COURS  : </h1>
+<div class="container-fluid">
+    <div class="float-left pl-5">
+        <h3> Véhicule disponible ou en revision </h3>
+        <?php
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)) :
+            $t = json_decode($row['caract'],true);
+            echo('<div class="row col-lg-4 col-sm-12 annonce">');
+                    //echo ('<span class="numAn">Annonce nº' . $row['id_vehicule'] . ' :</span></br>');
+                    echo ('Id de la voiture : ' . $row['id_vehicule']); echo('</br>');
+                    echo htmlspecialchars('Voiture : ' . $row['type']) ; echo('</br>');                         
+                    echo ('Moteur : ' . $t['moteur']); echo('</br>');
+                    echo ('Type de boite : ' . $t['boite']); echo('</br>');
+                    echo ('Nombre De Portes : ' . $t['nbPortes']); echo('</br>');
+                    echo ('Nombre de véhicule en stock : ' . $row['nb']); echo('</br>');
+                    echo htmlspecialchars('Etat  : ' . $row['location']);  echo('</br>');
+                    echo ('Prix (par jour de location) : ' . $row['prix']); echo('</br>');
+                    echo '<img class="annonce-img img-fluid" src="./vues/images/' . $row['photo'] .  '"/>'; echo('</br>');                
+            echo('</div>');
+        endwhile;
+        ?>
+    </div>
 
-<?php
 
-//ajoute des trucs a afficher stv vu que cest ladministrateur du site 
-  while($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)) :
- 
-    if (in_array($row2['nom'],$tab) == false){
-       array_push($tab,$row2['nom']);
-       echo ('<h1> Nom Locataire : ' . $row2['nom'] . '</h1>' ); echo('</br>');
+
+    <h3> LOCATION ACTUELLEMENT EN COURS  : </h3>
+
+    <?php
+
+    //ajoute des trucs a afficher stv vu que cest ladministrateur du site 
+    while($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)) :
+    
+        if (in_array($row2['nom'],$tab) == false){
+        array_push($tab,$row2['nom']);
+        echo ('<h1> Nom Locataire : ' . $row2['nom'] . '</h1>' ); echo('</br>');
+        }
+        
+        echo ('Id de la voiture : ' . $row2['id_vehicule']); echo('</br>');
+        echo ('Type du véhicule loué : ' . $row2['type']); echo('</br>');
+        echo ('Date de début de location : ' . $row2['dateD']); echo('</br>');
+        echo ('Date de fin de location : ' . $row2['dateF']); echo('</br>');
+        echo '<img class="annonce-img img-fluid" src="./vues/images/' . $row2['photo'] .  '"/>'; echo('</br>');
+    
+    endwhile;
+
+
+    ?>
+
+    <h3> LOCATION A VENIR  : </h3>
+    <?php
+    while($row4 = $stmt4->fetch(PDO::FETCH_ASSOC)) :
+    
+    if (in_array($row4['nom'],$tab2) == false){
+        array_push($tab2,$row4['nom']);
+        echo ('<h1> Nom Locataire : ' . $row4['nom'] . '</h1>' ); echo('</br>');
     }
     
-    echo ('Id de la voiture : ' . $row2['id_vehicule']); echo('</br>');
-    echo ('Type du véhicule loué : ' . $row2['type']); echo('</br>');
-    echo ('Date de début de location : ' . $row2['dateD']); echo('</br>');
-    echo ('Date de fin de location : ' . $row2['dateF']); echo('</br>');
-    echo '<img class="annonce-img img-fluid" src="./vues/images/' . $row2['photo'] .  '"/>'; echo('</br>');
-  
-  endwhile;
+    echo ('Id de la voiture : ' . $row4['id_vehicule']); echo('</br>');
+    echo ('Type du véhicule loué : ' . $row4['type']); echo('</br>');
+    echo ('Date de début de location : ' . $row4['dateD']); echo('</br>');
+    echo ('Date de fin de location : ' . $row4['dateF']); echo('</br>');
+    echo '<img class="annonce-img img-fluid" src="./vues/images/' . $row4['photo'] .  '"/>'; echo('</br>');
+
+    endwhile;
+    ?>
+
+    <form method="POST" action="index.php?controle=loueur&action=inserervehi">
+    <input type="submit" value="Insérer un nouveau véhicule">
+    </form>
+
+    <br>
+
+    <form method="POST" action="index.php?controle=loueur&action=supprimervoit" >
+
+            Entrez l'id du véhicule que vous souhaitez supprimer :    <br/>
+            <input 	name="supp" 	type="text" 
+                    value= " " />			 
+            <br/><br/>
+
+    <input type="submit" name ="submit" value="Supprimer ce véhicule">
 
 
-?>
+    <h3> FACTURE POUR CHAQUE ENTREPRISE </h3>
 
-<h1> LOCATION A VENIR  : </h1>
-<?php
-while($row4 = $stmt4->fetch(PDO::FETCH_ASSOC)) :
- 
- if (in_array($row4['nom'],$tab2) == false){
-    array_push($tab2,$row4['nom']);
-    echo ('<h1> Nom Locataire : ' . $row4['nom'] . '</h1>' ); echo('</br>');
- }
- 
- echo ('Id de la voiture : ' . $row4['id_vehicule']); echo('</br>');
- echo ('Type du véhicule loué : ' . $row4['type']); echo('</br>');
- echo ('Date de début de location : ' . $row4['dateD']); echo('</br>');
- echo ('Date de fin de location : ' . $row4['dateF']); echo('</br>');
- echo '<img class="annonce-img img-fluid" src="./vues/images/' . $row4['photo'] .  '"/>'; echo('</br>');
-
-endwhile;
-?>
-
-<form method="POST" action="index.php?controle=loueur&action=inserervehi">
-<input type="submit" value="Insérer un nouveau véhicule">
-</form>
-
-<br>
-
-<form method="POST" action="index.php?controle=loueur&action=supprimervoit" >
-
-        Entrez l'id du véhicule que vous souhaitez supprimer :    <br/>
-		<input 	name="supp" 	type="text" 
-				value= " " />			 
-		<br/><br/>
-
-<input type="submit" name ="submit" value="Supprimer ce véhicule">
-
-
-<h1> FACTURE POUR CHAQUE ENTREPRISE </h1>
-
-<?php while($row3 = $stmt3->fetch(PDO::FETCH_ASSOC)) :
-echo('Nom Entreprise : '. $row3['nom']);echo('</br>');
-echo(' Montant totale de sa facture : '. $row3['montant'] . ' euros.');echo('</br>');
-endwhile;
-?>
+    <?php while($row3 = $stmt3->fetch(PDO::FETCH_ASSOC)) :
+    echo('Nom Entreprise : '. $row3['nom']);echo('</br>');
+    echo(' Montant totale de sa facture : '. $row3['montant'] . ' euros.');echo('</br>');
+    endwhile;
+    ?>
+</div>
 
 
 </body>

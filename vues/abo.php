@@ -39,8 +39,8 @@
         </nav> 
     </div>
     <div class="container">
-        <div class="vos-locations">
-        Vos Locations </br>
+        <div class="vos-locations col-12 bg-light pb-5">
+        Vos Locations :</br>
             <?php
             while($row= $s->fetch(PDO::FETCH_ASSOC)) :
                 echo($row['type']);
@@ -53,7 +53,8 @@
             ?>
         </div>
         <?php echo($msg); ?>
-        <div id = "vehiculedispo">
+        <div id = "vehiculedispo" class="pt-2">
+            <h3>Louer plus de voiture ?</h3>
         <?php if ($msg == ""){ ?>
             <form method="POST" action="index.php?controle=abo&action=affDateLouer">
             <?php

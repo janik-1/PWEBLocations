@@ -59,6 +59,8 @@ nav{
     margin-right: 3em;
     padding-top: 0.5em;
     display: inline-block;
+    background-clip: border-box;
+    margin: 10px;
 }
 
 .annonces{
@@ -92,6 +94,7 @@ input, textarea, select{
 
 .vos-locations{
     padding-bottom: 2em;
+    border-radius: 2%;
 }
 
 .inscon{
