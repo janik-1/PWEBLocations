@@ -18,8 +18,8 @@ function insveh(){
         $ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
             if (in_array(strtolower($ext),array('jpg','png','jpeg'))){       
                 move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile);
-                $s = array('moteur'=> $moteur , 'boite'=> $typedeb , 'nbPortes' =>$nbdeporte);
-                newvoit($nbvehstock,$type,json_encode($s),$etat,$_FILES['image']['name'],$prix);
+                $s = array('moteur'=> trim($moteur) , 'boite'=> trim($typedeb) , 'nbPortes' =>trim($nbdeporte));
+                newvoit(trim($nbvehstock),trim($type),json_encode($s),trim($etat),$_FILES['image']['name'],trim($prix));
                 $delai = 0;
                 $url = 'index.php?controle=loueur&action=pageloueur';
                 header("Refresh: $delai;url=$url");
