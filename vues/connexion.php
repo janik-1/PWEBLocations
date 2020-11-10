@@ -61,7 +61,7 @@
         </form>
         <?php
         if($errco==1){
-            echo("Votre identifiant ou votre mot de passe est incorect.");
+            echo("Votre identifiant ou mot de passe est incorect.");
         }
         ?>
 	</div>
