@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="./vues/css/style.css">
 </head>
 
-<body>
+<body class="inscon">
 	<div class="container header-not-main" >
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top margin">        
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +38,7 @@
             </div>            
         </nav> 
     </div>
-<div id ="form" class="contenu">
+<div id ="form" class="container bg-light">
 	<h3> S'inscrire </h3> 
 
 	<form action="index.php?controle=inscription&action=affmodele" method="post">

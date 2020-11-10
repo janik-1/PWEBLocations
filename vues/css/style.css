@@ -73,6 +73,9 @@ nav{
 
 #form{
     text-align: center;
+    border-radius: 3%;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
 }
 
 input, textarea, select{
@@ -90,6 +93,13 @@ input, textarea, select{
 .vos-locations{
     padding-bottom: 2em;
 }
+
+.inscon{
+    background-image: url(../images/bg2.png);
+    background-size: cover;
+    height: 100%;
+}
+
 
 body, html {
     height: 100%;
