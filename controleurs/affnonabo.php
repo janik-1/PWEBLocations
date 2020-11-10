@@ -8,7 +8,7 @@ function af(){
     }else{
         $stmt = execreq();
         $msg="";
-        //test
+
     }
     
     require ("./vues/affnonabo.php");
