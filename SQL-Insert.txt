@@ -1,0 +1,15 @@
+INSERT INTO `vehicule` 
+ (`id_vehicule`, `nb`, `type`, `caract`, `location`, `photo`, `prix`) VALUES
+ (NULL, '2', 'Mercedes', '{"moteur":"sansPlomb", "boite":"automatique","nbPortes":3}', 'Disponible', 'merco-classe-s.jpg', '50');
+
+INSERT INTO `vehicule`
+ (`id_vehicule`, `nb`, `type`, `caract`, `location`, `photo`, `prix`) VALUES
+ (NULL, '5', 'Clio V', '{"moteur":"sansPlomb", "boite":"automatique","nbPortes":3}', 'Disponible', 'renault-clio-V.png', '40');
+
+INSERT INTO `vehicule`
+ (`id_vehicule`, `nb`, `type`, `caract`, `location`, `photo`, `prix`) VALUES
+ (NULL, '19', 'Audi RS6', '{"moteur":"sansPlomb", "boite":"automatique","nbPortes":3}', 'Disponible', 'audi_rs6.jpg', '30');
+
+INSERT INTO `vehicule`
+ (`id_vehicule`, `nb`, `type`, `caract`, `location`, `photo`, `prix`) VALUES
+ (NULL, '9', 'BMW X6', '{"moteur":"sansPlomb", "boite":"automatique","nbPortes":3}', 'Disponible', 'bmw-x6.jpg', '25');

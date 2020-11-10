@@ -1,0 +1,109 @@
+a{
+    text-decoration: none;
+}
+
+nav{
+    display: flex;
+    list-style-type: none;
+    float: right;
+    padding: 0 5% 0 0;
+}
+
+.lien{
+    margin: 1em;
+    font-weight: bolder;
+    font-size: large;
+    color: black;
+    border-radius: 10%;
+    background-color: bisque;
+    padding: 5px;
+}
+.btn-link {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    color: #0000EE;
+    padding: 0;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: inherit;
+    padding-top: 0.4em;
+}
+
+
+.row{
+    justify-content: space-evenly;
+}
+
+.annonce-img{
+    /* border-style: solid;
+    border-color: aquamarine; */
+    padding-bottom: 5%;
+    border-radius: 3%;
+    padding-right: 0.5em;
+    max-height: min-content;
+
+}
+
+.text-titre{
+    text-align: center;
+    font-size: large;
+    font-weight: 700;
+}
+
+
+.annonce{
+    background-color: antiquewhite;
+    border-radius: 4%;
+    margin-right: 3em;
+    padding-top: 0.5em;
+    display: inline-block;
+}
+
+.annonces{
+    padding-left: 5%;
+    display: inline-block;
+    text-align: center;
+}
+
+.numAn{
+    font-weight: 500;
+}
+
+#form{
+    text-align: center;
+}
+
+input, textarea, select{
+    border-radius: 5%;
+}
+
+.navbar a {
+    text-decoration: none;
+}
+
+.header-not-main {
+    padding-bottom: 5em;
+}
+
+.vos-locations{
+    padding-bottom: 2em;
+}
+
+body, html {
+    height: 100%;
+  }
+  .bg {
+    /* The image used */
+    background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(11).jpg");
+  
+    /* Half height */
+    height: 70%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
