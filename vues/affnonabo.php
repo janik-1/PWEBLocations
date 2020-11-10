@@ -53,7 +53,9 @@
         <span class="row col-12 text-titre">
             Nos voitures disponibles <br> <br>
         </span>
-
+        <span class="row col-12">
+            <?php echo($msg); ?>
+        </span>
         <div class="annonces">
             <?php if ($msg == ""){
                 while($row = $stmt->fetch(PDO::FETCH_ASSOC)) :
@@ -71,7 +73,6 @@
             }
             ?>            
         </div>    
-    </div>
-   <?php echo($msg); ?>
+    </div>  
    </body>
 </html>

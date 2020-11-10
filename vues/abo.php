@@ -52,9 +52,10 @@
             endwhile;
             ?>
         </div>
-        <?php echo($msg); ?>
+        
         <div id = "vehiculedispo" class="pt-2">
             <h3>Louer plus de voiture ?</h3>
+            <?php echo($msg); ?>
         <?php if ($msg == ""){ ?>
             <form method="POST" action="index.php?controle=abo&action=affDateLouer">
             <?php
