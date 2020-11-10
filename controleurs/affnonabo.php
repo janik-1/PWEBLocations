@@ -16,7 +16,12 @@ function af(){
 
 function deco(){
     require ("./modeles/affnonabo.php");
-    $stmt = execreq();
+    if (is_string(execreq()) == true){
+        $msg = execreq();
+    }else{
+        $stmt = execreq();
+        $msg="";
+    }
     sesdeco();
     require ("./vues/affnonabo.php");
 }
