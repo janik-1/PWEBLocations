@@ -10,8 +10,6 @@ function verif(){
     $mdp=  isset($_POST['mdp'])?($_POST['mdp']):'';
     $type =  isset($_POST['type'])?($_POST['type']):'';
         
-
-  
     $requete = "SELECT id_client,nom,email,mdp,type FROM client";
 
     try {

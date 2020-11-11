@@ -89,10 +89,11 @@
 
     <h3> LOCATION A VENIR  : </h3>
     <?php
+    $tab= array();
     while($row4 = $stmt4->fetch(PDO::FETCH_ASSOC)) :
     
-    if (in_array($row4['nom'],$tab2) == false){
-        array_push($tab2,$row4['nom']);
+    if (in_array($row4['nom'],$tab) == false){
+        array_push($tab,$row4['nom']);
         echo ('<h1> Nom Locataire : ' . $row4['nom'] . '</h1>' ); echo('</br>');
     }
     
@@ -123,13 +124,25 @@
 
     <h3> FACTURE POUR CHAQUE ENTREPRISE </h3>
 
-    <?php while($row3 = $stmt3->fetch(PDO::FETCH_ASSOC)) :
-    echo('Nom Entreprise : '. $row3['nom']);echo('</br>');
-    echo(' Montant totale de sa facture : '. $row3['montant'] . ' euros.');echo('</br>');
+    <?php
+    $tab=array();
+    while($row5 = $stmt5->fetch(PDO::FETCH_ASSOC)) :
+        if (in_array($row5['nom'],$tab) == false){
+            array_push($tab,$row5['nom']);
+            echo ('<h1> Nom Locataire : ' . $row5['nom'] . '</h1>' ); echo('</br>');  
+        }
+        echo(' Montant pour la voiture :  ' .$row5['type'] . ' le montant est de '. $row5['montantparvoiture'] . ' euros.');echo('</br>');
     endwhile;
     ?>
+
+<h1> les facturations totales </h1>
+
+<?php
+    for ($i=0 ; $i <$nbdefacturation ; $i++){
+    echo('La facturation totale est de : ' .  $facturationtotale[$i]);echo('</br>');
+    }
+?>
+
 </div>
-
-
 </body>
 </html>

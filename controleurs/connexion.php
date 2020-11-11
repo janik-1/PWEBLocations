@@ -6,7 +6,7 @@ function connexion(){
 
 function reqmodele(){
     require ("./modeles/connexion.php");
-    $errco = 0;
+    $errco = 0; 
     verif();
     if(!verif()){
         $errco=1;

@@ -3,12 +3,13 @@
 
 function pageloueur(){
     require('./modeles/loueur.php');
+    $tab = array(); 
     $stmt = affichervehdisloueur();
     $stmt2= affiloueur();
-    $stmt3 = calculentre();
-    $stmt4=affilocationavenir();
-    $tab = array();
-    $tab2= array();
+    $stmt4=affilocationavenir(); 
+    $stmt5 = calculmontantparvoiture();
+    $facturationtotale = calculentretotale();
+    $nbdefacturation = count($facturationtotale);  
 
     require('./vues/loueur.php');
 }

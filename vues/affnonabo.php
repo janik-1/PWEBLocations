@@ -54,10 +54,10 @@
             Nos voitures disponibles <br> <br>
         </span>
         <span class="row col-12">
-            <?php echo($msg); ?>
+            <?php echo($s); ?>
         </span>
         <div class="annonces">
-            <?php if ($msg == ""){
+            <?php if ($s == "") {
                 while($row = $stmt->fetch(PDO::FETCH_ASSOC)) :
                     $t = json_decode($row['caract'],true);
                     echo('<div class="row col-lg-4 col-sm-12 annonce">');
