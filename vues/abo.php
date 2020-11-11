@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="./vues/css/style.css">
 </head>
 
-<body>
+<body class="bg3">
     <div class="container header-not-main" > 
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">        
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,7 +61,7 @@
             <?php
                 while($row = $stmt3->fetch(PDO::FETCH_ASSOC)) :
                 echo('<div class="row col-lg-4 col-sm-12 annonce">');
-                    echo '<img class="annonce-img img-fluid" src="./vues/images/' . $row['photo'] .  '"/>'; echo('</br>');
+                    echo '<img class="img-fluid" src="./vues/images/' . $row['photo'] .  '"/>'; echo('</br>');
                     echo("<input type='checkbox' name= 'idveh[]' value='".$row["id_vehicule"]."'>".$row["type"]."<br>");
                 echo('</div>');
                 endwhile;

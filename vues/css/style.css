@@ -42,8 +42,9 @@ nav{
     padding-bottom: 5%;
     border-radius: 3%;
     padding-right: 0.5em;
-    max-height: min-content;
-
+    max-width: 400px;
+    height: auto;
+    width: fit-content;
 }
 
 .text-titre{
@@ -54,13 +55,14 @@ nav{
 
 
 .annonce{
-    background-color: antiquewhite;
+    background-color: rgba(116, 209, 216, 0.178);
     border-radius: 4%;
     margin-right: 3em;
     padding-top: 0.5em;
     display: inline-block;
     background-clip: border-box;
     margin: 10px;
+    min-width: 400px;
 }
 
 .annonces{
@@ -103,6 +105,35 @@ input, textarea, select{
     height: 100%;
 }
 
+.formulaire{
+
+    background-image: url("../images/UltraVoilet.jpg");
+    margin-top: 10px;
+}
+
+hr{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 5px;
+    background-color:#666;
+    opacity: 0.5;
+    border-radius: 50%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.bg3{
+    background-image: url(../images/GradeGrey.jpg);
+}
+
+.bg4{
+    background-image: url(../images/Dull.jpg);
+}
+
+.indeximg{
+    min-height: 400px;
+}
 
 body, html {
     height: 100%;

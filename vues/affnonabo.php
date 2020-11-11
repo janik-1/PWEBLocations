@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="./vues/css/style.css">
 </head>
 
-<body>
+<body class="bg4">
     <div class="container header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">        
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,7 +36,7 @@
             </div>            
         </nav> 
     </div>
-    <div class="bg jumbotron" style="padding-top: 150px;">
+    <div class="bg jumbotron indeximg" style="padding-top: 150px;">
         <div class="container">
             <div class="align-items-center row">
                 <div class="col-12">
@@ -67,7 +67,7 @@
                             echo ('Type de boite : ' . $t['boite']); echo('</br>');
                             echo ('Nombre De Portes : ' . $t['nbPortes']); echo('</br>');
                             echo htmlspecialchars('Etat: ' . $row['location']);  echo('</br>');
-                            echo '<img class="annonce-img img-fluid" src="./vues/images/' . $row['photo'] .  '"/>'; echo('</br>');                
+                            echo '<img class="img-fluid pb-4" src="./vues/images/' . $row['photo'] .  '"/>'; echo('</br>');                
                     echo('</div>');
                 endwhile;
             }

@@ -79,7 +79,7 @@ function calculentretotale(){
 
      while($row = $stmt2->fetch(PDO::FETCH_ASSOC)) :
         if ($row['nbdevoituredanslaflotte'] > 10){
-            $row['montant'] = $row['montant'] - ($row['montant'] * 0,1);
+            $row['montant'] = $row['montant'] - ($row['montant'] * 0.1);
             $s = $row['montant'] . ' euros pour l entreprise ' .$row['nom']. ' avec une réduction
             de 10%.' ;
             array_push($montantot,$s);
