@@ -12,7 +12,6 @@ function postmodele(){
 
 	if  (count($_POST)==0){
 		echo '<script type="text/javascript">alert("Veuillez remplir le formulaire")</script>';
-		return false;
 	}
 	if (!verifchamps($nom, $email,$mdp)){
 		return false;
@@ -53,7 +52,7 @@ function verifchamps($nom, $email,$mdp) {
 	if(strlen ( $mdp ) < 6 ){
 		return false;
 	}
-	if(!ctype_alnum ($nom)){
+	if(!ctype_alnum (trim($nom))){
 		return false;
 	}
 	if(strlen ( $nom ) > 20){
