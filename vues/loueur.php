@@ -71,7 +71,8 @@
         <h3> Location en cours  : </h3>
         <?php
         //ajoute des trucs a afficher stv vu que cest ladministrateur du site 
-        while($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)) :      
+        while($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)) :    
+              
             if (in_array($row2['nom'],$tab) == false){
             array_push($tab,$row2['nom']);
             echo ('<h4> Nom Locataire : ' . $row2['nom'] . '</h4>' );
