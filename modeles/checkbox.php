@@ -24,7 +24,8 @@ function recuptype(){  // recupère les type des case coché pour les voiture.
             endwhile;      
         }
     }
-    $_SESSION['idvoit'] = $voitid; // variable qui contient les id vehicules que le client souhaite louer 
+    $_SESSION['idvoit'] = $voitid;
+    $_SESSION['voitype']  =   $voitype; // variable qui contient les id vehicules que le client souhaite louer 
     return $voitype;
 }
 
@@ -33,6 +34,8 @@ function date1(){ // voiture id en parametre
     $date3 = $_POST['datedebut'] ;
     $date4 = $_POST['datefin'] ;
     $count = count($_SESSION['idvoit']); 
+    $s = "";
+
     for ($i = 0 ; $i<$count ; ++$i){     
 
         $req3 = "SELECT prix,nb,id_vehicule FROM vehicule where id_vehicule =". $_SESSION['idvoit'][$i] .";";
@@ -43,26 +46,31 @@ function date1(){ // voiture id en parametre
             echo utf8_encode("Echec de select : " . $e->getMessage() . "\n");
             die(); // On arrête tout.      
             }
-            
-        while($row= $stmt3->fetch(PDO::FETCH_ASSOC)) :
-            if  ($row['nb'] > 0){      
-                $s = "N"; 
-                if ($date4[$i] == ""){
-                    $date4[$i] =date('Y-m-d',strtotime('+1 month',strtotime(date('Y-m-d'))));
+        if ($date4[$i] > $date3[$i]){
+            while($row= $stmt3->fetch(PDO::FETCH_ASSOC)) :
+                if  ($row['nb'] > 0){      
+                    $msg = "N"; 
+                    if ($date4[$i] == ""){
+                        $date4[$i] =date('Y-m-d',strtotime('+1 month',strtotime(date('Y-m-d'))));
+                    }
+                    $nbjour= NbJours($date3[$i],$date4[$i]);
+                    $prix = $row['prix']*$nbjour ; 
+                    $nb =  $row['nb'] -1;        
+                    ajouterfacturation($_SESSION['id'],$row['id_vehicule'],$date3[$i],$date4[$i],$prix,$msg);
+                    updateloc ( $_SESSION['idvoit'][$i],$_SESSION['id'],$nb); 
                 }
-                $nbjour= NbJours($date3[$i],$date4[$i]);
-                $prix = $row['prix']*$nbjour ; 
-                $nb =  $row['nb'] -1;        
-                ajouterfacturation($_SESSION['id'],$row['id_vehicule'],$date3[$i],$date4[$i],$prix,$s);
-                updateloc ( $_SESSION['idvoit'][$i],$_SESSION['id'],$nb); 
-            }
-        endwhile;
-
-    }
-
-    $delai = 0.5;
-	$url = 'index.php?controle=abo&action=affAbo';
-	header("Refresh: $delai;url=$url");
+            endwhile;
+            $delai = 0.5;
+            $url = 'index.php?controle=abo&action=affAbo';
+            header("Refresh: $delai;url=$url");
+           
+         }  
+         elseif ($date4[$i] < $date3[$i]) {
+             $s = "Impossible ! La date de fin commence avant la date de début.";
+         }
+        
+     }
+     return $s;
 }
 
 function ajouterfacturation($ide,$idv,$dateD,$dateF,$valeur,$etat) {

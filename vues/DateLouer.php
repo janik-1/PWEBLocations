@@ -52,6 +52,8 @@
       }
       ?> <br>
       <input type="submit" value="Confirmer la location">
+
+      <?php echo('</br>');echo($msg); ?>
   </div>
 
 
