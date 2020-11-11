@@ -103,11 +103,14 @@
                 echo("Aucune réservations de véhicule à venir");
             }
             while($row4 = $stmt4->fetch(PDO::FETCH_ASSOC)) :
+                if (in_array($row4['nom'],$tab) == false){
+                    echo('<div class="row col-12">');
+                    array_push($tab,$row4['nom']);
+                    echo ('<h4> Nom Locataire : ' . $row4['nom'] . '</h4>' );
+                    echo('</div>');
+                }                
                 echo('<div class="row col-lg-4 col-sm-12 annonce">');
-                    if (in_array($row4['nom'],$tab) == false){
-                        array_push($tab,$row4['nom']);
-                        echo ('<h4> Nom Locataire : ' . $row4['nom'] . '</h4>' );
-                    }
+
                     
                     echo ('Id de la voiture : ' . $row4['id_vehicule']); echo('</br>');
                     echo ('Type du véhicule loué : ' . $row4['type']); echo('</br>');

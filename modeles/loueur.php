@@ -22,7 +22,7 @@ function affiloueur(){
         FROM client,vehicule,facturation 
         WHERE vehicule.id_vehicule = facturation.idv and facturation.ide = client.id_client 
         and DATEDIFF(facturation.dateD, DATE(NOW()))<0 
-        and DATEDIFF(facturation.dateF, DATE(NOW()))>0';
+        and DATEDIFF(facturation.dateF, DATE(NOW()))>0 order by (client.nom)' ;
 
             try {
             $stmt = $pdo->query($sql);
@@ -41,7 +41,7 @@ function affilocationavenir(){
   $sql = 'SELECT vehicule.id_vehicule,client.nom, vehicule.type,vehicule.photo,facturation.dateD,facturation.dateF 
   FROM client,vehicule,facturation 
   WHERE vehicule.id_vehicule = facturation.idv and facturation.ide = client.id_client 
-  and DATEDIFF(facturation.dateD, DATE(NOW()))>0 ';
+  and DATEDIFF(facturation.dateD, DATE(NOW()))>0  order by (client.nom)';
         try {
         $stmt = $pdo->query($sql);
         
