@@ -48,6 +48,9 @@
     <div class=" pl-5 text-center">
         <h3> Véhicule disponible ou en revision </h3>
         <?php
+        if ($stmt->rowCount() <= 0){
+            echo("Aucun véhicule n'est disponible ou en révision pour le moment");
+        }
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)) :
             $t = json_decode($row['caract'],true);
             echo('<div class="row col-lg-4 col-sm-12 annonce">');
@@ -70,43 +73,49 @@
     <div class="text-center">
         <h3> Location en cours  : </h3>
         <?php
-        //ajoute des trucs a afficher stv vu que cest ladministrateur du site 
-        while($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)) :    
-            echo('<div class="row col-lg-4 col-sm-12 inlblo">');
-    
-                if (in_array($row2['nom'],$tab) == false){
-                array_push($tab,$row2['nom']);
-                echo ('<h4> Nom Locataire : ' . $row2['nom'] . '</h4>' );
-                }
-                echo ('Id de la voiture : ' . $row2['id_vehicule']); echo('</br>');
-                echo ('Type du véhicule loué : ' . $row2['type']); echo('</br>');
-                echo ('Date de début de location : ' . $row2['dateD']); echo('</br>');
-                echo ('Date de fin de location : ' . $row2['dateF']); echo('</br>');
-                echo '<img class="img-fluid annonce-img" src="./vues/images/' . $row2['photo'] .  '"/>'; echo('</br>');
-            echo('</div>');
+            if ($stmt2->rowCount() <= 0){
+                echo("Aucun véhicule n'est en location pour le moment");
+            }
+            //ajoute des trucs a afficher stv vu que cest ladministrateur du site 
+            while($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)) :    
+                echo('<div class="row col-lg-4 col-sm-12 inlblo">');
+        
+                    if (in_array($row2['nom'],$tab) == false){
+                    array_push($tab,$row2['nom']);
+                    echo ('<h4> Nom Locataire : ' . $row2['nom'] . '</h4>' );
+                    }
+                    echo ('Id de la voiture : ' . $row2['id_vehicule']); echo('</br>');
+                    echo ('Type du véhicule loué : ' . $row2['type']); echo('</br>');
+                    echo ('Date de début de location : ' . $row2['dateD']); echo('</br>');
+                    echo ('Date de fin de location : ' . $row2['dateF']); echo('</br>');
+                    echo '<img class="img-fluid annonce-img" src="./vues/images/' . $row2['photo'] .  '"/>'; echo('</br>');
+                echo('</div>');
 
-        endwhile;
+            endwhile;
         ?>        
     </div>
         <hr>
     <div class="text-center">
         <h3> Location à venir : </h3>
         <?php
-        $tab= array();
-        while($row4 = $stmt4->fetch(PDO::FETCH_ASSOC)) :
-            echo('<div class="row col-lg-4 col-sm-12 inlblo">');
-                if (in_array($row4['nom'],$tab) == false){
-                    array_push($tab,$row4['nom']);
-                    echo ('<h4> Nom Locataire : ' . $row4['nom'] . '</h4>' );
-                }
-                
-                echo ('Id de la voiture : ' . $row4['id_vehicule']); echo('</br>');
-                echo ('Type du véhicule loué : ' . $row4['type']); echo('</br>');
-                echo ('Date de début de location : ' . $row4['dateD']); echo('</br>');
-                echo ('Date de fin de location : ' . $row4['dateF']); echo('</br>');
-                echo '<img class="img-fluid annonce-img " src="./vues/images/' . $row4['photo'] .  '"/>'; echo('</br>');
-            echo('</div>'); 
-        endwhile;
+            $tab= array();
+            if ($stmt4->rowCount() <= 0){
+                echo("Aucune réservations de véhicule à venir");
+            }
+            while($row4 = $stmt4->fetch(PDO::FETCH_ASSOC)) :
+                echo('<div class="row col-lg-4 col-sm-12 inlblo">');
+                    if (in_array($row4['nom'],$tab) == false){
+                        array_push($tab,$row4['nom']);
+                        echo ('<h4> Nom Locataire : ' . $row4['nom'] . '</h4>' );
+                    }
+                    
+                    echo ('Id de la voiture : ' . $row4['id_vehicule']); echo('</br>');
+                    echo ('Type du véhicule loué : ' . $row4['type']); echo('</br>');
+                    echo ('Date de début de location : ' . $row4['dateD']); echo('</br>');
+                    echo ('Date de fin de location : ' . $row4['dateF']); echo('</br>');
+                    echo '<img class="img-fluid annonce-img " src="./vues/images/' . $row4['photo'] .  '"/>'; echo('</br>');
+                echo('</div>'); 
+            endwhile;
             
         ?>
     </div>
@@ -131,6 +140,9 @@
 
         <?php
         $tab=array();
+        if ($stmt5->rowCount() <= 0){
+            echo("Aucun facture n'est disponible pour le moment");
+        }
         while($row5 = $stmt5->fetch(PDO::FETCH_ASSOC)) :
             if (in_array($row5['nom'],$tab) == false){
                 array_push($tab,$row5['nom']);
@@ -140,12 +152,16 @@
         endwhile;
         ?>
 
-        <h1> Total </h1>
+        
 
         <?php
-            for ($i=0 ; $i <$nbdefacturation ; $i++){
-            echo('La facturation totale est de : ' .  $facturationtotale[$i]);echo('</br>');
+            if ($nbdefacturation>0){
+                echo('<h4> Total </h4>');
+                for ($i=0 ; $i <$nbdefacturation ; $i++){
+                echo('La facturation totale est de : ' .  $facturationtotale[$i]);echo('</br>');
+                }                
             }
+
         ?>        
     </div>
 
