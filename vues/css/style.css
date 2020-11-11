@@ -43,6 +43,7 @@ nav{
     border-radius: 3%;
     padding-right: 0.5em;
     max-width: 400px;
+    max-height: 400px;
     height: auto;
     width: fit-content;
 }
@@ -133,6 +134,14 @@ hr{
 
 .indeximg{
     min-height: 400px;
+}
+
+.radius4{
+    border-radius: 4%;
+}
+
+.inlblo{
+    display: inline-block;
 }
 
 body, html {

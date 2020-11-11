@@ -72,17 +72,19 @@
         <?php
         //ajoute des trucs a afficher stv vu que cest ladministrateur du site 
         while($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)) :    
-              
-            if (in_array($row2['nom'],$tab) == false){
-            array_push($tab,$row2['nom']);
-            echo ('<h4> Nom Locataire : ' . $row2['nom'] . '</h4>' );
-            }
-            echo ('Id de la voiture : ' . $row2['id_vehicule']); echo('</br>');
-            echo ('Type du véhicule loué : ' . $row2['type']); echo('</br>');
-            echo ('Date de début de location : ' . $row2['dateD']); echo('</br>');
-            echo ('Date de fin de location : ' . $row2['dateF']); echo('</br>');
-            echo '<img class="img-fluid annonce-img" src="./vues/images/' . $row2['photo'] .  '"/>'; echo('</br>');
-        
+            echo('<div class="row col-lg-4 col-sm-12 inlblo">');
+    
+                if (in_array($row2['nom'],$tab) == false){
+                array_push($tab,$row2['nom']);
+                echo ('<h4> Nom Locataire : ' . $row2['nom'] . '</h4>' );
+                }
+                echo ('Id de la voiture : ' . $row2['id_vehicule']); echo('</br>');
+                echo ('Type du véhicule loué : ' . $row2['type']); echo('</br>');
+                echo ('Date de début de location : ' . $row2['dateD']); echo('</br>');
+                echo ('Date de fin de location : ' . $row2['dateF']); echo('</br>');
+                echo '<img class="img-fluid annonce-img" src="./vues/images/' . $row2['photo'] .  '"/>'; echo('</br>');
+            echo('</div>');
+
         endwhile;
         ?>        
     </div>
@@ -92,19 +94,20 @@
         <?php
         $tab= array();
         while($row4 = $stmt4->fetch(PDO::FETCH_ASSOC)) :
-        
-        if (in_array($row4['nom'],$tab) == false){
-            array_push($tab,$row4['nom']);
-            echo ('<h4> Nom Locataire : ' . $row4['nom'] . '</h4>' );
-        }
-        
-        echo ('Id de la voiture : ' . $row4['id_vehicule']); echo('</br>');
-        echo ('Type du véhicule loué : ' . $row4['type']); echo('</br>');
-        echo ('Date de début de location : ' . $row4['dateD']); echo('</br>');
-        echo ('Date de fin de location : ' . $row4['dateF']); echo('</br>');
-        echo '<img class="annonce-img img-fluid" src="./vues/images/' . $row4['photo'] .  '"/>'; echo('</br>');
-
+            echo('<div class="row col-lg-4 col-sm-12 inlblo">');
+                if (in_array($row4['nom'],$tab) == false){
+                    array_push($tab,$row4['nom']);
+                    echo ('<h4> Nom Locataire : ' . $row4['nom'] . '</h4>' );
+                }
+                
+                echo ('Id de la voiture : ' . $row4['id_vehicule']); echo('</br>');
+                echo ('Type du véhicule loué : ' . $row4['type']); echo('</br>');
+                echo ('Date de début de location : ' . $row4['dateD']); echo('</br>');
+                echo ('Date de fin de location : ' . $row4['dateF']); echo('</br>');
+                echo '<img class="img-fluid annonce-img " src="./vues/images/' . $row4['photo'] .  '"/>'; echo('</br>');
+            echo('</div>'); 
         endwhile;
+            
         ?>
     </div>
 

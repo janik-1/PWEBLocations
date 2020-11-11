@@ -67,7 +67,7 @@
                             echo ('Type de boite : ' . $t['boite']); echo('</br>');
                             echo ('Nombre De Portes : ' . $t['nbPortes']); echo('</br>');
                             echo htmlspecialchars('Etat: ' . $row['location']);  echo('</br>');
-                            echo '<img class="img-fluid pb-4" src="./vues/images/' . $row['photo'] .  '"/>'; echo('</br>');                
+                            echo '<img class="img-fluid pb-4 radius4" src="./vues/images/' . $row['photo'] .  '"/>'; echo('</br>');                
                     echo('</div>');
                 endwhile;
             }
