@@ -55,12 +55,17 @@
 		Mail	 <br/>
 		<input 	name="email" 	type="text" 
 				value= " " />             <br/><br/>
-		Mot de passe	<br/>
+		Mot de passe (6 caractères min)	<br/>
 		<input 	type="password" 	name="mdp"
 				value= " " />             <br/><br/>
 				
 		<input type= "submit"  value="Enregistrer" >
-	</form>
+    </form>
+    <?php
+        if($errins==1){
+            echo("Vos champs sont mal remplis");
+        }
+    ?>
 </div>
 
     <!-- redirige vers la page inscription -->
