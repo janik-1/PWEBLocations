@@ -97,12 +97,12 @@ return $montantot;
 function calculmontantparvoiture(){    
     require ("./connect.php");
 
-    $req ='SELECT client.id_client, client.nom,vehicule.type,facturation.valeur AS montantparvoiture 
+    $req ='SELECT client.id_client, client.nom,vehicule.type, vehicule.id_vehicule, facturation.valeur  AS montantparvoiture
     FROM client 
     LEFT JOIN facturation ON client.id_client = facturation.ide 
     LEFT JOIN vehicule ON vehicule.id_vehicule = facturation.idv 
     WHERE facturation.valeur != 0 
-    GROUP BY client.id_client , client.nom, montantparvoiture'; 
+    GROUP BY vehicule.id_vehicule, client.id_client , client.nom, montantparvoiture'; 
     try {
     $stmt = $pdo->query($req);
     }
