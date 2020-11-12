@@ -7,8 +7,8 @@ function postmodele(){
 	$email=  isset($_POST['email'])?($_POST['email']):'';
     $msg='';
 	$type =  isset($_POST['type'])?($_POST['type']):'';
-	
 
+   		
 
 	if  (count($_POST)==0){
 		echo '<script type="text/javascript">alert("Veuillez remplir le formulaire")</script>';
@@ -18,7 +18,7 @@ function postmodele(){
 	}
     else{
 		ajouterpersonne(trim($nom),trim($mdp),trim($email),trim($type));
-		$delai = 2;
+		$delai = 1;
 		$url = 'index.php?controle=connexion&action=connexion';
 		header("Refresh: $delai;url=$url");        
 		return true;        
@@ -48,6 +48,10 @@ function ajouterpersonne($nom,$mdp,$email,$type) {
 	
 }
 
+function valideMail($email) {
+    return !preg_match("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$^", $email) ? FALSE : TRUE;
+}
+
 function verifchamps($nom, $email,$mdp) {
 	if(strlen ( $mdp ) < 6 ){
 		return false;
@@ -67,6 +71,10 @@ function verifchamps($nom, $email,$mdp) {
 	if(empty($mdp)){
 		return false;
 	}
+	if(!valideMail($email)){
+		return false;
+	}
+
 	return true;
 }
 		
