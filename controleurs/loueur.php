@@ -10,11 +10,11 @@ function pageloueur(){
     $stmt5 = calculmontantparvoiture();
     $facturationtotale = calculentretotale();
     $nbdefacturation = count($facturationtotale);  
-
     require('./vues/loueur.php');
 }
 
 function inserervehi(){
+    $msg="";
     require('./vues/formvehicule.php');
 }
 
@@ -26,6 +26,5 @@ function inserermod(){
 function supprimervoit(){
    require('./modeles/insererveh.php');
    deleteveh();
-   
 }
 ?>

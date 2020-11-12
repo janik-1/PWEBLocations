@@ -9,9 +9,9 @@ function insveh(){
     $nbdeporte=  isset($_POST['ndp'])?($_POST['ndp']):'';
     $etat=  isset($_POST['disponible'])?($_POST['disponible']):'';
     $prix=  isset($_POST['prix'])?($_POST['prix']):'';
-    $msg = '';
+    $msg="";
   
-
+if (verif($nbvehstock,$type,$moteur,$typedeb,$etat,$nbdeporte,$prix)){
     if(isset($_POST['submit'])  && isset($_FILES['image'])){
         $uploaddir = './vues/images/';
         $uploadfile = $uploaddir . basename($_FILES['image']['name']);
@@ -25,13 +25,45 @@ function insveh(){
                 header("Refresh: $delai;url=$url");
             } 
             else {
-                $msg = "Il y'a un problème au niveau de l'extension de l'image";
-                $delai = 0;
-                $url = 'index.php?controle=loueur&action=pageloueur';
-                header("Refresh: $delai;url=$url");
+                $msg = "Il y'a un problème au niveau de l'extension de l'image. ";
+                require('./vues/formvehicule.php'); 
             }
     }
+}
+    else{
+        $msg = " Veuillez remplir entièrement le formulaire et vérifier la syntaxe de vos champs.";
+        require('./vues/formvehicule.php');
 
+    }
+}
+
+function verif($nb,$type,$moteur,$typedeb,$etat,$nbdeporte,$prix){
+$bool = true;
+    if (empty($nb) or !is_numeric($nb)){
+        $bool = false;
+    }
+    if (empty($type) or !is_string($type)){
+        $bool = false;
+    }
+    if (empty($moteur) or !is_string($moteur)){
+        $bool = false;
+    }
+    if (empty($nb) or !is_numeric($nb)){
+        $bool = false;
+    }
+    if (empty($typedeb) or !is_string($typedeb)){
+        $bool = false;
+    }
+    if (empty($etat) or !is_string($etat)){
+        $bool = false;
+    }
+    if (empty($nbdeporte) or !is_numeric($nbdeporte)){
+        $bool = false;
+    }
+    if (empty($prix) or !is_numeric($prix)){
+        $bool = false;
+    }
+return $bool;
 }
 
 function newvoit($nb,$type,$caract,$etat,$nomimage,$prix){
@@ -55,9 +87,12 @@ function newvoit($nb,$type,$caract,$etat,$nomimage,$prix){
 	}
 }
 
+
 function deleteveh(){
     require('./connect.php');
+   
     $req = "SELECT * FROM vehicule";
+    
     try {
     $stmt = $pdo->query($req);
     }
@@ -77,11 +112,13 @@ function deleteveh(){
                 die(); // On arrête tout.      
                 }
         }
+        
     endwhile;
-
+   
     $delai = 0.5;
-    $url = 'index.php?controle=loueur&action=pageloueur';
-    header("Refresh: $delai;url=$url");
+     $url = 'index.php?controle=loueur&action=pageloueur';
+     header("Refresh: $delai;url=$url");
+    
 
 }
 

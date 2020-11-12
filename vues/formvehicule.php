@@ -70,7 +70,7 @@
 				<input 	name="prix" 	type="text" 
 						value= " " />			 
 				<br/><br/>
-				Choisir une image pour la voiture :
+				Choisir une image pour la voiture (jpg,png,jpeg):
 				<br>
 				<input type="file"
 							id="image" name="image" 
@@ -78,6 +78,7 @@
 			<br/><br/>
 			<input type="submit" name ="submit" value="Insérer un nouveau véhicule">
 		</form>
+		<?php echo($msg);?>
 		<br>
 	</div>
 

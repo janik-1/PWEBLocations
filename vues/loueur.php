@@ -133,7 +133,7 @@
                         value= " " />			 
                 <br/><br/>
 
-        <input type="submit" name ="submit" value="Supprimer ce véhicule">        
+        <input type="submit" name ="submit" value="Supprimer ce véhicule">  
     </div>
 
 

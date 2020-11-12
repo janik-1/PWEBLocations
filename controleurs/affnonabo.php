@@ -6,7 +6,7 @@ function af(){
     $count = execreq()->rowCount();
 
     if ($count == 0){
-    $s = "Aucun véhicule disponible pour le moment";
+    $s = "Aucun véhicule disponible pour le moment.";
     }else{
         $stmt = execreq(); 
         $s =""; 
@@ -18,7 +18,7 @@ function deco(){
     require ("./modeles/affnonabo.php");
     $count = execreq()->rowCount();
     if ($count == 0){
-        $s = "Aucun véhicule disponible pour le moment";
+        $s = "Aucun véhicule disponible pour le moment.";
         }else{
             $stmt = execreq(); 
             $s =""; 

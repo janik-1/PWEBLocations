@@ -34,7 +34,8 @@ function date1(){ // voiture id en parametre
     $date3 = $_POST['datedebut'] ;
     $date4 = $_POST['datefin'] ;
     $count = count($_SESSION['idvoit']); 
-    $s = "";
+    $bool = true;
+
 
     for ($i = 0 ; $i<$count ; ++$i){     
 
@@ -46,11 +47,11 @@ function date1(){ // voiture id en parametre
             echo utf8_encode("Echec de select : " . $e->getMessage() . "\n");
             die(); // On arrête tout.      
             }
-        if ($date4[$i] > $date3[$i]){
+        if ($date4[$i] > $date3[$i] or ($date3[$i]>date('Y-m-d') and empty($date4[$i])==true)){
             while($row= $stmt3->fetch(PDO::FETCH_ASSOC)) :
                 if  ($row['nb'] > 0){      
                     $msg = "N"; 
-                    if ($date4[$i] == ""){
+                    if (empty($date4[$i])){
                         $date4[$i] =date('Y-m-d',strtotime('+1 month',strtotime(date('Y-m-d'))));
                     }
                     $nbjour= NbJours($date3[$i],$date4[$i]);
@@ -65,12 +66,19 @@ function date1(){ // voiture id en parametre
             header("Refresh: $delai;url=$url");
            
          }  
-         elseif ($date4[$i] < $date3[$i]) {
-             $s = "Impossible ! La date de fin commence avant la date de début.";
+         elseif ($date4[$i] < $date3[$i] and empty($date4[$i]) == false) {
+            $msg= "La date de fin doit être supérieur à la date de début.";
+            $caseco= $_SESSION['voitype'];     
+            require ("./vues/DateLouer.php");
+         }
+         elseif ($date3[$i] < date('Y-m-d')){
+            $msg= "La date de début doit être supérieur à la date de aujourd'hui.";
+            $caseco= $_SESSION['voitype'];     
+            require ("./vues/DateLouer.php");
          }
         
      }
-     return $s;
+   
 }
 
 function ajouterfacturation($ide,$idv,$dateD,$dateF,$valeur,$etat) {

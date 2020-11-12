@@ -44,7 +44,7 @@ function vehdispo(){
     if ($count == 0){
     $s = "Il n'y a pas de véhicule disponible";
     return $s;
-    }else{
+    } else{
     return $stmt3;
     }
 }
