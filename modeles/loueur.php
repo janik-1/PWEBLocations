@@ -4,7 +4,7 @@ date_default_timezone_set( 'Europe/Paris' );
 function affichervehdisloueur(){
     require ("./connect.php");
 
-    $req = "SELECT * FROM vehicule where location = 'disponible' OR location='en_revision'"; // on prend tout les vehicule du loueur 
+    $req = "SELECT * FROM vehicule where trim(lower(location)) = 'disponible' OR trim(lower(location))='en_revision'"; // on prend tout les vehicule du loueur 
         try {
         $stmt = $pdo->query($req);
         }

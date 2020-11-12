@@ -3,7 +3,7 @@
 function execreq(){
     require ("./connect.php");
 
-    $requete = "SELECT * FROM vehicule where (location = 'disponible' OR location='en_revision')
+    $requete = "SELECT * FROM vehicule where (trim(lower(location)) = 'disponible' OR location='en_revision')
     and nb>0;";
 
 try {

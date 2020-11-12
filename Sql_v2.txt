@@ -84,3 +84,11 @@ INSERT INTO `vehicule`
 INSERT INTO `vehicule`
  (`id_vehicule`, `nb`, `type`, `caract`, `location`, `photo`, `prix`) VALUES
  (NULL, '9', 'BMW X6', '{"moteur":"sansPlomb", "boite":"automatique","nbPortes":3}', 'Disponible', 'bmw-x6.jpg', '25');
+
+INSERT INTO `vehicule`
+ (`id_vehicule`, `nb`, `type`, `caract`, `location`, `photo`, `prix`) VALUES
+ (NULL, '25', 'Porsche 911', '{"moteur":"sansPlomb", "boite":"automatique","nbPortes":4}', 'Disponible', 'porsche-911.jpg', '86');
+
+INSERT INTO `vehicule`
+ (`id_vehicule`, `nb`, `type`, `caract`, `location`, `photo`, `prix`) VALUES
+ (NULL, '25', 'Bentley', '{"moteur":"sansPlomb", "boite":"automatique","nbPortes":4}', 'Disponible', 'bentley-gt-v8.jpg', '201');
