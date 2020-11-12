@@ -47,7 +47,7 @@ function date1(){ // voiture id en parametre
             echo utf8_encode("Echec de select : " . $e->getMessage() . "\n");
             die(); // On arrête tout.      
             }
-        if ($date4[$i] > $date3[$i] or ($date3[$i]>date('Y-m-d') and empty($date4[$i])==true)){
+        if (($date4[$i] > $date3[$i] or ($date3[$i]>date('Y-m-d') and empty($date4[$i])==true)) and $date3[$i] >= date('Y-m-d') ){
             while($row= $stmt3->fetch(PDO::FETCH_ASSOC)) :
                 if  ($row['nb'] > 0){      
                     $msg = "N"; 
@@ -67,12 +67,12 @@ function date1(){ // voiture id en parametre
            
          }  
          elseif ($date4[$i] < $date3[$i] and empty($date4[$i]) == false) {
-            $msg= "La date de fin doit être supérieur à la date de début.";
+            $msg= "La location doit commencer avant la date de fin";
             $caseco= $_SESSION['voitype'];     
             require ("./vues/DateLouer.php");
          }
          elseif ($date3[$i] < date('Y-m-d')){
-            $msg= "La date de début doit être supérieur à la date de aujourd'hui.";
+            $msg= "La date de début commence aujourd'hui, elle ne peut commencer avant";
             $caseco= $_SESSION['voitype'];     
             require ("./vues/DateLouer.php");
          }
